@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+               {{ pageTitle }}
+            </div>
+            <br />
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-2">Filter by</div>
+                    <div class="col-md-6">
+                        <input type="text" [(ngModel)]='listFiler' />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Filter by:</h5>
+                </div>
+                <div class="col-md-6">
+                    <button (click)='showNumbers()' class="btn btn-sm btn-primary">
+                        {{ phoneNumberVisible ? 'Hide' : 'Show' }} Phone number
+                    </button>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table" *ngIf="users.length"> <!-- user.length > 0 ? "true" : "false" -->
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Country</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor='let user of filteredUser'>
+                            <td> {{ user.fullName }} </td>
+                            <td> {{ user.email }} </td>
+                            <td>
+                                <span *ngIf='phoneNumberVisible'> <!-- phoneNumberVisible == true ? "show" : "hide" -->
+                                    {{ user.phone }} 
+                                </span>    
+                            </td>
+                            <td> {{ user.country }} </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
